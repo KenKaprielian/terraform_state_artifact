@@ -45,6 +45,8 @@ runs:
         terraform init
         $terraformapply = "${{ inputs.apply }}"
         $terraformdestroy = "${{ inputs.destroy }}"
+        echo destroy variable $terraformdestroy
+        echo apply variable $terraformapply
         $custom_plan_flags = "${{ inputs.custom_plan_flags }}"
         $custom_apply_flags = "${{ inputs.custom_apply_flags }}"
         if ($terraformapply -eq "false"){
