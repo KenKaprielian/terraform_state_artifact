@@ -54,14 +54,14 @@ runs:
         echo 'apply variable after: ' $terraformapply
         
         terraform plan $custom_plan_flags
-        if ($terraformapply = 'true' && $terraformdestroy = 'false'){
+        if [ $terraformapply == 'true' && $terraformdestroy == 'false' ]; then
           echo 'the apply block ran'
           terraform apply -auto-approve $custom_apply_flags
-        }
-        if ($terraformdestroy = 'true'){
+        fi
+        if [ $terraformdestroy == 'true' ]; then
           echo 'the destroy block ran'
           terraform destroy
-        }
+        fi
         $StateExists = Test-Path -Path ./terraform.tfstate -PathType Leaf
         if ($StateExists){
           openssl enc -in ./terraform.tfstate -aes-256-cbc -pbkdf2 -pass pass:"${{ inputs.encryptionkey }}" -out ./terraform.tfstate.enc
