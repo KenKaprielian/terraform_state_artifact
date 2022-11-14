@@ -54,11 +54,11 @@ runs:
         echo 'apply variable after: ' $terraformapply
         
         terraform plan $custom_plan_flags
-        if ($terraformapply == 'true' && $terraformdestroy == 'false'){
+        if ($terraformapply = 'true' && $terraformdestroy = 'false'){
           echo 'the apply block ran'
           terraform apply -auto-approve $custom_apply_flags
         }
-        if ($terraformdestroy == 'true'){
+        if ($terraformdestroy = 'true'){
           echo 'the destroy block ran'
           terraform destroy
         }
