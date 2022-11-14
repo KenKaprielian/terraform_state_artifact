@@ -49,22 +49,16 @@ runs:
         echo 'apply variable before" ' $terraformapply
         $custom_plan_flags = "${{ inputs.custom_plan_flags }}"
         $custom_apply_flags = "${{ inputs.custom_apply_flags }}"
-        if ($terraformapply -eq "false"){
-          $terraformapply = $false
-        }
-        if ($terraformdestroy -eq "false"){
-          $terraformdestroy = $false
-        }
         
         echo 'destroy variable after: ' $terraformdestroy
         echo 'apply variable after: ' $terraformapply
         
         terraform plan $custom_plan_flags
-        if ($terraformapply && !$terraformdestroy){
+        if ($terraformapply == 'true' && $terraformdestroy == 'false'){
           echo 'the apply block ran'
           terraform apply -auto-approve $custom_apply_flags
         }
-        if ($terraformdestroy){
+        if ($terraformdestroy == 'true'){
           echo 'the destroy block ran'
           terraform destroy
         }
