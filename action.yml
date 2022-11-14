@@ -54,9 +54,11 @@ runs:
         }
         terraform plan $custom_plan_flags
         if ($terraformapply && !$terraformdestroy){
+          echo the apply block ran
           terraform apply -auto-approve $custom_apply_flags
         }
         if ($terraformdestroy){
+          echo the destroy block ran
           terraform destroy
         }
         $StateExists = Test-Path -Path ./terraform.tfstate -PathType Leaf
