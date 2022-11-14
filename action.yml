@@ -60,7 +60,7 @@ runs:
         }
         if ( $terraformdestroy -eq 'true' ) {
           echo 'the destroy block ran'
-          terraform destroy
+          terraform destroy -auto-approve
         }
         $StateExists = Test-Path -Path ./terraform.tfstate -PathType Leaf
         if ($StateExists){
