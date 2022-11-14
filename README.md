@@ -68,6 +68,7 @@ The action supports the following inputs:
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|---------|
 | `encryptionkey` | An encryption key to use when encrypting the statefile. Recommended to use a secret value.                                              |   N/A   |
 | `apply`         | (optional) Whether to run the `terraform apply` command.               | `true`  |
+| `destroy`         | (optional) Whether to run the `terraform destroy` command.           | `false`  |
 | `custom_plan_flags`         | (optional) Add a custom flag to the `terraform plan` command.               | `''`  |
 | `custom_apply_flags`         | (optional) Add a custom flag to the `terraform apply` command.               | `''`  |
 
